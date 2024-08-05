@@ -1,0 +1,49 @@
+<div class="container">
+    <h2 class="employees">Employees</h2>
+    <div>
+        <input 
+          type="text" 
+          placeholder="Search by name or surname" 
+          [(ngModel)]="searchTerm" 
+          (input)="searchEmployees()" 
+          class="search-input"
+        />
+          <select [(ngModel)]="sortBy" (change)="sortEmployees()" class="sort-select">
+            <option value="" disabled selected>Sort by</option>
+            <option value="firstName">First Name</option>
+            <option value="lastName">Last Name</option>
+            <option value="jobTitle">Job Title</option>
+          </select>
+        <select [(ngModel)]="selectedJobTitle" (change)="filterEmployees()" class="filter-select">
+          <option value="">All Job Titles</option>
+          
+          @for (jobTitle of jobTitles; track $index){
+        <option>
+          {{ jobTitle }}
+        </option>
+          }
+        
+        </select>
+      </div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Job Title</th>
+        </tr>
+         @for (employee of displayedEmployees; track $index){
+        <tr>
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.jobTitle }}</td>
+        </tr>
+        }
+      </table>
+      <div class="pagination-controls">
+        <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+</div>

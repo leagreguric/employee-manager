@@ -1,0 +1,55 @@
+
+@mixin textStyleScrolling {
+    font-family: $font-secondary;
+    color: $green-light;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  
+  @mixin flexCenterRow() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  
+  @mixin flexCenterColumn() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  @mixin flexCenterVertical() {
+    display: flex;
+    align-items: center;
+  }
+  
+  @mixin flexCenterHorizontal() {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @mixin flexSpaceBetween() {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @mixin flexSpaceAround() {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  @mixin flexColumn() {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @mixin flexRow() {
+    display: flex;
+    flex-direction: row;
+  }

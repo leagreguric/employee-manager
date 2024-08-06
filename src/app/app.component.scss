@@ -1,0 +1,21 @@
+ @import '../mixins.scss';
+  
+  .main {
+    @include flexRow;
+    height: 100vh; 
+  }
+  
+  .navigation {
+    @include flexColumn;
+  
+    width: 10%; 
+    height: 95vh; 
+    background: rgb(97,100,214);
+    background: radial-gradient(circle, rgba(97,100,214,1) 0%, rgba(99,100,212,1) 100%);
+    padding: 20px; 
+    overflow-y: auto; 
+  }
+
+  app-create-employee {
+    flex: 1;
+  }

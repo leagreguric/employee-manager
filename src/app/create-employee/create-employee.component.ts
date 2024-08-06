@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './create-employee.component.html',
-  styleUrl: './create-employee.component.css',
+  styleUrl: './create-employee.component.scss',
 })
 export class CreateEmployeeComponent {
   createEmployeeForm = new FormGroup({
@@ -27,6 +27,8 @@ export class CreateEmployeeComponent {
     private employeeService: EmployeeService,
     private router: Router
   ) {}
+
+  
 
   goToHomePage() {
     return this.router.navigate(['/employees']);

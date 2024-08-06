@@ -16,7 +16,7 @@ import { EmployeeService } from './employee.service';
   ],
   providers: [EmployeeService],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'Employee Manager';

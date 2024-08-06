@@ -1,16 +1,15 @@
-<div class="flex justify-center p-8">
-    <div class="w-1/2">
-        <h3 class="text-center font-bold text-xl text-slate-500">Create New Employee</h3>
-        <form class="border rounded-lg w-full mt-8" (ngSubmit)="handleSubmit()" [formGroup]="createEmployeeForm">
-            <div class="flex flex-col space-y-1 px-8 pt-8">
+<div class="container">
+        <h3 class="title">Create New Employee</h3>
+        <form class="form" (ngSubmit)="handleSubmit()" [formGroup]="createEmployeeForm">
+            <div >
                 <label for="first name">First Name</label>
                 <input type="text" placeholder="Enter Firstname..."
-                    class="outline-none border p-4 rounded-lg border-red-600" formControlName="firstName"
-                    [class.border-red-600]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'firstName'
+                    class="input" formControlName="firstName"
+                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'firstName'
                         )">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
-                <div class="text-red-600">
+                <div >
                     @if (createEmployeeForm.hasError('required', 'firstName')) {
                     <p>Firstname is required</p>
                     }
@@ -18,30 +17,30 @@
                 }
             </div>
 
-            <div class="flex flex-col space-y-1 px-8 pt-8">
+            <div >
                 <label for="last name">Last Name</label>
                 <input type="text" placeholder="Enter Lastname..."
-                    class="outline-none border p-4 rounded-lg border-red-600" formControlName="lastName"
-                    [class.border-red-600]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'lastName'
+                    class="input" formControlName="lastName"
+                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'lastName'
                         )">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
-                <div class="text-red-600">
+                <div >
                     @if (createEmployeeForm.hasError('required', 'lastName')) {
                     <p>Lastname is required</p>
                     }
                 </div>
                 }
             </div>
-            <div class="flex flex-col space-y-1 px-8 pt-8">
+            <div >
                 <label for="jobTitle">jobTitle</label>
                 <input type="text" placeholder="Enter jobTitle..."
-                    class="outline-none border p-4 rounded-lg border-red-600" formControlName="jobTitle"
-                    [class.border-red-600]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && (createEmployeeForm.hasError('required', 'jobTitle'
+                    class="input" formControlName="jobTitle"
+                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && (createEmployeeForm.hasError('required', 'jobTitle'
                         ) || createEmployeeForm.hasError('jobTitle', 'jobTitle'))">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
-                <div class="text-red-600">
+                <div >
                     @if (createEmployeeForm.hasError('required', 'jobTitle')) {
                     <p>jobTitle is required</p>
                     }
@@ -52,14 +51,14 @@
                 }
             </div>
 
-            <div class="my-8 flex justify-center w-full px-8">
+            <div >
                 <button type="button"
-                    class="border p-4 w-full rounded-lg bg-slate-500 text-gray-100 disabled:cursor-not-allowed"
+                    class="button"
                     [disabled]="createEmployeeForm.invalid || isLoading"
                     (click)="handleSubmit()">
                     Create Employee
                 </button>
             </div>
         </form>
-    </div>
+   
 </div>

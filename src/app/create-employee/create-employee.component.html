@@ -3,10 +3,13 @@
         <form class="form" (ngSubmit)="handleSubmit()" [formGroup]="createEmployeeForm">
             <div >
                 <label for="first name">First Name</label>
-                <input type="text" placeholder="Enter Firstname..."
-                    class="input" formControlName="firstName"
-                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'firstName'
-                        )">
+                <input type="text"
+                placeholder="Enter Firstname..."
+                class="input"
+                formControlName="firstName"
+                [ngClass]="{
+                'error': createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'firstName')
+                 }">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
                 <div >
@@ -19,10 +22,13 @@
 
             <div >
                 <label for="last name">Last Name</label>
-                <input type="text" placeholder="Enter Lastname..."
-                    class="input" formControlName="lastName"
-                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'lastName'
-                        )">
+                <input type="text"
+                placeholder="Enter Lastname..."
+                class="input"
+                formControlName="lastName"
+                [ngClass]="{
+                'error': createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && createEmployeeForm.hasError('required', 'lastName')
+                }">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
                 <div >
@@ -32,12 +38,25 @@
                 </div>
                 }
             </div>
+            <div>
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="datetime-local" placeholder="Enter Date of Birth..." class="input" formControlName="dateOfBirth">
+                
+                @if (createEmployeeForm.controls.dateOfBirth.invalid && (createEmployeeForm.controls.dateOfBirth.dirty || createEmployeeForm.controls.dateOfBirth.touched)){
+                    <div>
+                    <p>Date of Birth is required</p>
+                </div>
+            }
+            </div>
             <div >
                 <label for="jobTitle">jobTitle</label>
                 <input type="text" placeholder="Enter jobTitle..."
-                    class="input" formControlName="jobTitle"
-                    [class]="createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) && (createEmployeeForm.hasError('required', 'jobTitle'
-                        ) || createEmployeeForm.hasError('jobTitle', 'jobTitle'))">
+                class="input"
+                formControlName="jobTitle"
+                [ngClass]="{
+                    'error': createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched) &&
+                    (createEmployeeForm.hasError('required', 'jobTitle') || createEmployeeForm.hasError('jobTitle', 'jobTitle'))
+                }">
 
                 @if (createEmployeeForm.invalid && (createEmployeeForm.dirty || createEmployeeForm.touched)) {
                 <div >
@@ -52,12 +71,12 @@
             </div>
 
             <div >
-                <button type="button"
-                    class="button"
-                    [disabled]="createEmployeeForm.invalid || isLoading"
-                    (click)="handleSubmit()">
-                    Create Employee
-                </button>
+                <button type="submit"
+                class="btn2"
+                [disabled]="createEmployeeForm.invalid || isLoading">
+                SAVE
+            </button>
+            
             </div>
         </form>
    

@@ -3,11 +3,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { EmployeeService } from './employee.service';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    MatIconModule,
     RouterOutlet,
     CommonModule,
     RouterLink,
@@ -21,7 +24,7 @@ import { EmployeeService } from './employee.service';
 export class AppComponent {
   title = 'Employee Manager';
   links = [
-    { path: '', text: 'Employees' },
-    { path: '/new', text: 'Create Employee' },
+    { path: '', text: 'Employees', icon: 'people' },
+    { path: '/new', text: 'Create', icon: 'add_circle' },
   ];
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
   FormControl,
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-employee',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './create-employee.component.html',
   styleUrl: './create-employee.component.scss',
 })
@@ -21,7 +22,9 @@ export class CreateEmployeeComponent {
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     jobTitle: new FormControl('', [Validators.required]),
-  });
+    dateOfBirth: new FormControl('', Validators.required)
+});
+
   isLoading = false;
   constructor(
     private employeeService: EmployeeService,
@@ -35,28 +38,27 @@ export class CreateEmployeeComponent {
   }
 
   saveEmployee() {
-    this.employeeService
-      .createEmployee(this.createEmployeeForm.value as IEmployee)
-      .subscribe(
+    this.isLoading = true; // Postavljanje stanja učitavanja na true
+    this.employeeService.createEmployee(this.createEmployeeForm.value as IEmployee).subscribe(
         (data) => {
-          this.isLoading = false;
-          console.log(data);
-          this.goToHomePage();
+            this.isLoading = false;
+            console.log(data);
+            this.goToHomePage();
         },
         (error) => {
-          this.isLoading = false;
-          console.log(error);
+            this.isLoading = false;
+            console.log(error);
         }
-      );
+    );
+}
+
+handleSubmit() {
+  if (this.createEmployeeForm.valid) {
+    console.log('Form Data:', this.createEmployeeForm.value);
+  } else {
+    console.log('Form is invalid');
   }
-  handleSubmit() {
-    // Provjerite valjanost forme
-    if (this.createEmployeeForm.valid) {
-      console.log(this.createEmployeeForm.value); // Ispis u konzolu
-      // Opcionalno: možete dodati preusmjeravanje ako želite
-      // this.goToHomePage();
-    } else {
-      console.log('Forma nije ispravna');
-    }
-  }
+}
+
+
 }

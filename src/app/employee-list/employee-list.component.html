@@ -1,49 +1,64 @@
 <div class="container">
-    <h2 class="employees">Employees</h2>
-    <div>
-        <input 
-          type="text" 
-          placeholder="Search by name or surname" 
-          [(ngModel)]="searchTerm" 
-          (input)="searchEmployees()" 
-          class="search-input"
-        />
-          <select [(ngModel)]="sortBy" (change)="sortEmployees()" class="sort-select">
-            <option value="" disabled selected>Sort by</option>
-            <option value="firstName">First Name</option>
-            <option value="lastName">Last Name</option>
-            <option value="jobTitle">Job Title</option>
-          </select>
-        <select [(ngModel)]="selectedJobTitle" (change)="filterEmployees()" class="filter-select">
-          <option value="">All Job Titles</option>
-          
-          @for (jobTitle of jobTitles; track $index){
-        <option>
-          {{ jobTitle }}
-        </option>
-          }
-        
+  <h2 class="employees">Employees</h2>
+  <div class="filters">
+    <div class="search-container">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input 
+        type="text" 
+        placeholder="Search by name or surname" 
+        [(ngModel)]="searchTerm" 
+        (input)="searchEmployees()" 
+        class="search-input"
+      />
+    </div>
+        <select [(ngModel)]="sortBy" (change)="sortEmployees()" class="sort-select">
+          <option value="" disabled selected>Sort by</option>
+          <option value="firstName">First Name</option>
+          <option value="lastName">Last Name</option>
+          <option value="dateOfBirth">Date of Birth</option>
+          <option value="jobTitle">Job Title</option>
         </select>
-      </div>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Job Title</th>
-        </tr>
-         @for (employee of displayedEmployees; track $index){
-        <tr>
-          <td>{{ employee.id }}</td>
-          <td>{{ employee.firstName }}</td>
-          <td>{{ employee.lastName }}</td>
-          <td>{{ employee.jobTitle }}</td>
-        </tr>
+      <select [(ngModel)]="selectedJobTitle" (change)="filterEmployees()" class="filter-select">
+        <option value="">All Job Titles</option>
+        
+        @for (jobTitle of jobTitles; track $index){
+          <option [value]="jobTitle">
+            {{ jobTitle }}
+        </option>
+
         }
-      </table>
-      <div class="pagination-controls">
-        <button (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
-        <button (click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-      </div>
+      
+      </select>
+    </div>
+  
+    <table class="employee-list ">
+      <thead>
+      <tr class="employee-card">
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Date of birth</th>
+        <th>Job Title</th>
+      </tr>
+    </thead>
+    <tbody >
+       @for (employee of displayedEmployees; track $index){
+      <tr class="employee-card">
+        <td class="employee-info" id="id"> <mat-icon class="icon">person</mat-icon>{{ employee.id }}</td>
+        <td class="employee-info">{{ employee.firstName }}</td>
+        <td class="employee-info">{{ employee.lastName }}</td>
+        <td class="employee-info">{{ employee.dateOfBirth | date: 'yyyy-MM-dd' }}</td>
+        <td class="employee-job-title" [style.background-color]="getJobTitleColor(employee.jobTitle)">
+          {{ employee.jobTitle }}
+      </td>
+
+      </tr>
+      }
+    </tbody>
+    </table>
+    <div class="pagination-controls">
+      <button class="pagination-btn" (click)="setPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button class="pagination-btn"(click)="setPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
 </div>

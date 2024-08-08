@@ -1,7 +1,7 @@
 <main class="main">
 
   <nav class="navigation">
-    <h1 class="title">
+    <h1 class="title-nav">
       EMPLOYEE MANAGER
     </h1>
 
@@ -9,7 +9,10 @@
     <ul class="links">
       @for (link of links; track $index) {
       <li>
-        <a [routerLink]="link.path" routerLinkActive="active" ariaCurrentWhenActive="page">{{ link.text }}</a>
+        <button [routerLink]="link.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page" class="link-button">
+          <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+          {{ link.text }}
+        </button>
       </li>
       }
     </ul>

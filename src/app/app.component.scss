@@ -1,21 +1,80 @@
- @import '../mixins.scss';
-  
-  .main {
-    @include flexRow;
-    height: 100vh; 
-  }
-  
-  .navigation {
-    @include flexColumn;
-  
-    width: 10%; 
-    height: 95vh; 
-    background: rgb(97,100,214);
-    background: radial-gradient(circle, rgba(97,100,214,1) 0%, rgba(99,100,212,1) 100%);
-    padding: 20px; 
-    overflow-y: auto; 
-  }
+@import '../mixins.scss';
 
-  app-create-employee {
-    flex: 1;
+.main {
+  @include flexRow;
+  height: 100vh; 
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    flex-direction: column; 
+    height: auto; 
   }
+}
+
+.navigation {
+  @include flexColumn;
+  align-items: center;
+  text-align: center;
+  width: 10%; 
+  background: rgb(97,100,214);
+  background: radial-gradient(circle, #6164d6 0%, rgba(99,100,212,1) 100%);
+  padding: 20px; 
+  min-width: 5rem;
+  overflow-x: hidden;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto; 
+  }
+}
+
+.router-outlet {
+  flex: 1;
+
+  @media (max-width: 768px) {
+    width: 90%; 
+  }
+}
+
+.links {
+  list-style-type: none; 
+  padding: 0;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.links li {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.link-button {
+  @include flexCenterColumn;
+  background-color: transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 2vh;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  width: 100%; 
+  text-align: center; 
+  box-sizing: border-box;
+}
+
+.link-button:hover,
+.link-button.active {
+  background-color: white;
+  color: #6164d6;
+}
+
+.title-nav {
+  font-weight: 700;
+  line-height: 2rem;
+  color: white;
+  font-size: 150%;
+  align-self: center;
+}

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatIconModule } from '@angular/material/icon';
 import { EmployeeListComponent } from './employee-list.component';
 
 describe('EmployeeListComponent', () => {
@@ -8,7 +8,7 @@ describe('EmployeeListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EmployeeListComponent]
+      imports: [EmployeeListComponent,MatIconModule]
     })
     .compileComponents();
 

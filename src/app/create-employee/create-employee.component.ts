@@ -38,7 +38,7 @@ export class CreateEmployeeComponent {
   }
 
   saveEmployee() {
-    this.isLoading = true; // Postavljanje stanja učitavanja na true
+    this.isLoading = true; 
     this.employeeService.createEmployee(this.createEmployeeForm.value as IEmployee).subscribe(
         (data) => {
             this.isLoading = false;

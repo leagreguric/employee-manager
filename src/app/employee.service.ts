@@ -17,7 +17,7 @@ export class EmployeeService {
       map(response => {
         if (response.success) {
           console.log('Server response:', response);
-          return response.data; // Vraća niz zaposlenih
+          return response.data; 
         } else {
           throw new Error('API returned an unsuccessful response');
         }
@@ -44,7 +44,7 @@ export class EmployeeService {
       map(response => {
         if (response.success) {
           console.log('Server response:', response);
-          return response.data; // Vraća pojedinačnog zaposlenog
+          return response.data; 
         } else {
           throw new Error('API returned an unsuccessful response');
         }
@@ -79,10 +79,8 @@ export class EmployeeService {
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     console.error(errorMessage);

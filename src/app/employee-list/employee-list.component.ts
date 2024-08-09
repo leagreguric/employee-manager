@@ -24,8 +24,7 @@ export class EmployeeListComponent implements OnInit {
   jobTitles: string[] = [];
   jobTitleColors: { [key: string]: string } = {};
   private colorPalette: string[] = ['#FDD8D2', '#FDEBC9', '#CAD3E5', '#DAF8E1', '#E7C2EF', '#00BCD4', '#FFC107', '#8BC34A'];
-
-  // Paginacija
+  
   currentPage: number = 1;
   itemsPerPage: number = 5;
   totalPages: number = 1;
